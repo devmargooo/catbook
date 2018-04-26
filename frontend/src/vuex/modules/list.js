@@ -1,24 +1,43 @@
 import {
-  CATS_LIST
+  CATS_LIST,
+  catsList
 } from "../types";
+
+import api from '../../api/index'
+import store from '../store';
+import axios from 'axios'
 
 const state = {
   list: []
 }
 
 const mutations = {
-  [CATS_LIST] (state, list) {
-    state.list = list
+  [CATS_LIST] (state, payload) {
+    state.list = payload
   }
 }
 
-export const getCatsList = ({dispatch}) => {
-  // return api.Attribute.get(filter).then(response => {
-  //   dispatch(types.ATTRIBUTE_LIST, response.data.data);
-  // });
+const actions = {
+  catsList ({ commit }, payload) {
+    commit(CATS_LIST, payload)
+  }
+}
+
+const getters = {
+    catsList: state => {
+      return state.list;
+    }
+}
+
+export const getCatsList = () => {
+  return axios.get(api.list).then(response => {
+    store.dispatch(catsList, response.data);
+  })
 };
 
 export default {
   state,
-  mutations
+  mutations,
+  actions,
+  getters
 }

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="http://localhost:8081/images/don_kihot/0.jpg">
+    <List/>
     <router-view/>
   </div>
 </template>
@@ -8,15 +9,12 @@
 <script>
   import axios from 'axios'
   import store from './vuex/store'
+  import List from './components/List'
   export default {
     name: 'App',
     store: store,
-    created: function () {
-      axios.get('http://localhost:8081/api').then(r => {
-        console.log(r)
-      }, e => {
-        console.log(e)
-      })
+    components: {
+      List
     }
   }
 </script>
