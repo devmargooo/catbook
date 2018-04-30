@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import HelloWorld from '@/components/HelloWorld'
+import 'es6-promise/auto'
 
 describe('HelloWorld.vue', () => {
   it('should render correct contents', () => {
