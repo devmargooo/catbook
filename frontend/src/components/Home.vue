@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <List class="list" :data="list"/>
-    <Page class="page"/>
+    <Page class="page" v-if="selected" :data="selected"/>
   </div>
 </template>
 <style lang="scss">
@@ -13,8 +13,8 @@
   .list {
     width: 220px;
     min-height: 100vh;
-    border-right: 1px solid lightblue;
     flex-shrink: 0;
+    background: black;
   }
 
   .page {
@@ -24,18 +24,20 @@
 </style>
 <script>
   import List from './list/List'
-  import Page from './page/page'
+  import Page from './page/Page'
   import { getCatsList } from '../vuex/modules/list'
   export default {
     name: 'home',
     created: function () {
       getCatsList().then(() => {
         this.list = this.$store.getters.catsList
+        this.selected = this.list[0]
       })
     },
     data() {
       return {
-        list: []
+        list: [],
+        selected: null
       }
     },
     components: {
