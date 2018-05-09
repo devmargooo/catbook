@@ -18,6 +18,7 @@
     <div class="gallery">
       <img class="pic" v-for="(item, index) in cat.pics" :src="getPicSrc(index)">
     </div>
+    <Modal v-if="data.alias" :alias="data.alias" :current="0"></Modal>
   </div>
 </template>
 <style lang="scss">
@@ -66,6 +67,7 @@
 <script>
   import api from '../../api/index'
   import axios from 'axios'
+  import Modal from '../modal/Modal'
   export default {
     name: 'page',
     props: ['data'],
@@ -73,7 +75,6 @@
       if (this.data.alias) {
         axios.get(api.list + '/' + this.data.alias).then(response => {
           this.cat = response.data;
-          console.log(this.cat)
         }, error => console.log(error))
       }
     },
@@ -88,6 +89,9 @@
       getPicSrc(index) {
         return `${api.images}${this.data.alias}/${index}.jpg`
       }
+    },
+    components: {
+      Modal
     }
   }
 </script>

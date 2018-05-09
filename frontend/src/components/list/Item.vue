@@ -13,10 +13,11 @@
     padding: 5px;
     color: white;
     font-weight: bold;
-  }
-
-  .item--selected {
-    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+    }
   }
 
   .item__img {
