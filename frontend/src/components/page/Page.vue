@@ -18,7 +18,7 @@
     <div class="gallery">
       <img class="pic" v-for="(item, index) in cat.pics" :src="getPicSrc(index)">
     </div>
-    <Modal v-if="data.alias" :alias="data.alias" :current="0"></Modal>
+    <Modal v-if="data.alias" :alias="data.alias" :current="0" :pics="cat.pics"></Modal>
   </div>
 </template>
 <style lang="scss">
