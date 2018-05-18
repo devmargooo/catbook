@@ -1,9 +1,11 @@
 <template>
-  <div class="overlay">
+  <div class="overlay" v-if="isOpen" @click="closePopup($event)">
     <div class="popup">
-      <img v-if="pics > 1" src="../../assets/icons/arrow-left.png" class="arrow" @click="moveLeft()">
-      <img class="popup__img" :src="imgSrc">
-      <img v-if="pics > 1" src="../../assets/icons/arrow-right.png" class="arrow" @click="moveRight()">
+      <div class="popup__inner">
+        <img v-if="pics > 1" src="../../assets/icons/arrow-left.png" class="arrow" @click="moveLeft()">
+        <img class="popup__img" :src="imgSrc">
+        <img v-if="pics > 1" src="../../assets/icons/arrow-right.png" class="arrow" @click="moveRight()">
+      </div>
     </div>
   </div>
 </template>
@@ -21,15 +23,26 @@
   .popup {
     min-width:80px;
     max-width: 500px;
-    height:250px;
+    height:350px;
     background: rgba(255, 255, 255, 0.9);
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     display: inline-flex;
-    margin: 50px auto;
+    margin: 10px auto;
+    width: 455px;
+  }
+  .popup__inner {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    height: 220px;
+    margin-top: 5px;
+    width: 100%;
   }
   .popup__img {
     margin: 0 10px;
+    max-height: 220px;
   }
 
   .arrow {
@@ -44,7 +57,7 @@
   import api from '../../api/index'
   export default {
     name: 'modal',
-    props: ['alias', 'current', 'pics'],
+    props: ['alias', 'current', 'pics', 'isOpen'],
     data () {
       return {
         currentImg: this.current
@@ -69,18 +82,16 @@
         } else {
           this.currentImg = this.pics - 1;
         }
+      },
+      closePopup(e) {
+        if (e.target.classList.contains('overlay')) {
+          this.$emit('close-modal')
+        }
       }
     },
-    created() {
-      console.log(this.alias)
-      console.log(this.current)
-      console.log(this.currentImg)
-      console.log(this.imgSrc)
-      console.log(this.pics)
-    },
     watch: {
-      pics: function () {
-        console.log(this.pics)
+      current: function () {
+        this.currentImg = this.current;
       }
     }
   }

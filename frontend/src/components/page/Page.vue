@@ -16,9 +16,14 @@
       </div>
     </div>
     <div class="gallery">
-      <img class="pic" v-for="(item, index) in cat.pics" :src="getPicSrc(index)">
+      <img class="pic" v-for="(item, index) in cat.pics" :src="getPicSrc(index)" @click="openModal(index)">
     </div>
-    <Modal v-if="data.alias" :alias="data.alias" :current="0" :pics="cat.pics"></Modal>
+    <Modal v-if="data.alias"
+           :alias="data.alias"
+           :current="picOpened"
+           :pics="cat.pics"
+           :is-open="isModalOpen"
+           @close-modal="isModalOpen = false"></Modal>
   </div>
 </template>
 <style lang="scss">
@@ -82,12 +87,19 @@
       return {
         src: api.images + this.data.alias + '/0.jpg',
         name: this.data.surname ? this.data.name + ' ' + this.data.surname : this.data.name,
-        cat: {}
+        cat: {},
+        isModalOpen: false,
+        picOpened: 0
       }
     },
     methods: {
       getPicSrc(index) {
         return `${api.images}${this.data.alias}/${index}.jpg`
+      },
+      openModal(pic) {
+        this.picOpened = pic;
+        this.isModalOpen = true;
+
       }
     },
     components: {
