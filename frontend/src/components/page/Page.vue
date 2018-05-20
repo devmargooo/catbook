@@ -73,6 +73,7 @@
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'
+  import { getComments } from '../../vuex/modules/comments.js'
   export default {
     name: 'page',
     props: ['data'],
@@ -81,6 +82,7 @@
         axios.get(api.list + '/' + this.data.alias).then(response => {
           this.cat = response.data;
         }, error => console.log(error))
+        getComments(this.data.alias)
       }
     },
     data() {
@@ -99,7 +101,6 @@
       openModal(pic) {
         this.picOpened = pic;
         this.isModalOpen = true;
-
       }
     },
     components: {

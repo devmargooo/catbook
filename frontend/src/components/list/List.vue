@@ -7,7 +7,6 @@
 
 </style>
 <script>
-  import { getCatsList } from '../../vuex/modules/list'
   import Item from './Item'
   export default {
     name: 'list',

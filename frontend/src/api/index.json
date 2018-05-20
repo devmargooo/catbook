@@ -1,4 +1,5 @@
 {
   "list": "http://localhost:8081/api",
-  "images": "http://localhost:8081/images/"
+  "images": "http://localhost:8081/images/",
+  "comments": "http://localhost:8081/api/comments/"
 }
