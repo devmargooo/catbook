@@ -13,7 +13,10 @@
         <img v-if="pics > 1" src="../../assets/icons/arrow-right.png" class="arrow" @click="moveRight()">
       </div>
       <div class="comments">
-
+        <div class="comment" v-for="item in comments">
+          <img class="comment__img" :src="getAvatarSrc(item.author)"/>
+          <p class="comment__text">{{item.text}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -45,7 +48,7 @@
     align-items: center;
     justify-content: space-between;
     display: flex;
-    height: 231px;
+    height: 245px;
     margin-top: 5px;
     width: 100%;
   }
@@ -78,17 +81,22 @@
       transform: scale(1.1, 1.1);
     }
   }
+  .comment {
+    display: flex;
+  }
+  .comment__img {
+    width: 50px;
+    height: 50px;
+  }
 </style>
 <script>
   import api from '../../api/index'
-  import axios from 'axios'
   export default {
     name: 'modal',
     props: ['alias', 'current', 'pics', 'isOpen'],
     data () {
       return {
-        currentImg: this.current,
-        comments: []
+        currentImg: this.current
       }
     },
     computed: {
@@ -97,10 +105,11 @@
       },
       likes: function () {
         return this.$store.getters.comments.find(item => item.id === this.currentImg).likes
+      },
+      comments: function () {
+        console.log(this.$store.getters.comments.find(item => item.id === this.currentImg).comments)
+        return this.$store.getters.comments.find(item => item.id === this.currentImg).comments
       }
-    },
-    created () {
-      // axios.get()
     },
     methods: {
       moveRight() {
@@ -121,6 +130,9 @@
         if (e.target.classList.contains('overlay')) {
           this.$emit('close-modal')
         }
+      },
+      getAvatarSrc(alias) {
+        return api.images + alias + '/0.jpg'
       }
     },
     watch: {
