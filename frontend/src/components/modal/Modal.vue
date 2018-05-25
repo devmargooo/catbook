@@ -6,7 +6,7 @@
         <div class="popup__img-wrapper">
           <img class="popup__img" :src="imgSrc">
           <div class="like">
-            <img class="like__img" src="../../assets/icons/pawprint-gray.svg">
+            <img class="like__img" src="../../assets/icons/pawprint-gray.svg" @click="like()">
             <div class="like__numbers">{{likes}}</div>
           </div>
         </div>
@@ -81,16 +81,29 @@
       transform: scale(1.1, 1.1);
     }
   }
+  .comments {
+    width: 100%;
+    padding: 3px 32px;
+  }
   .comment {
     display: flex;
+    width: 100%;
   }
   .comment__img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+  }
+
+  .comment__text {
+    padding-left: 5px;
+    font-size: 12px;
+    line-height: 1;
   }
 </style>
 <script>
   import api from '../../api/index'
+  import { likePhoto } from '../../vuex/modules/comments'
   export default {
     name: 'modal',
     props: ['alias', 'current', 'pics', 'isOpen'],
@@ -133,6 +146,9 @@
       },
       getAvatarSrc(alias) {
         return api.images + alias + '/0.jpg'
+      },
+      like() {
+        likePhoto(this.currentImg);
       }
     },
     watch: {

@@ -1,6 +1,8 @@
 import {
   COMMENTS_LIST,
-  commentsList
+  LIKE,
+  commentsList,
+  like
 } from "../types";
 
 import api from '../../api/index'
@@ -14,12 +16,25 @@ const state = {
 const mutations = {
   [COMMENTS_LIST] (state, payload) {
     state.comments = payload
+    console.log(state.comments)
+  },
+  [LIKE] (state, id) {
+    for (let i = 0; i <  state.comments.length; i++) {
+      if (state.comments[i].id === id) {
+        state.comments[i].likes++;
+        break;
+      }
+    }
+    console.log(state.comments)
   }
 }
 
 const actions = {
   commentsList ({ commit }, payload) {
     commit(COMMENTS_LIST, payload)
+  },
+  like ({commit}, id) {
+      commit(LIKE, id)
   }
 }
 
@@ -34,6 +49,10 @@ export const getComments = (alias) => {
     store.dispatch(commentsList, response.data);
   })
 };
+
+export const likePhoto = (id) => {
+  store.dispatch(like, id)
+}
 
 export default {
   state,
