@@ -9,5 +9,25 @@
     "id": 1,
     "alias": "charlotte",
     "name": "Шарлотта"
+  },
+  {
+    "id": 2,
+    "alias": "ted",
+    "name": "Ted"
+  },
+  {
+    "id": 3,
+    "alias": "angelika",
+    "name": "Анжелика"
+  },
+  {
+    "id": 4,
+    "alias": "jonathan",
+    "name": "Джонатан"
+  },
+  {
+    "id": 5,
+    "alias": "lizzy",
+    "name": "Лиззи"
   }
 ]

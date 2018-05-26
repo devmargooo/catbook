@@ -25,7 +25,6 @@ const mutations = {
         break;
       }
     }
-    console.log(state.comments)
   }
 }
 
