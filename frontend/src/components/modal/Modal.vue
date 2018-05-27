@@ -120,7 +120,6 @@
         return this.$store.getters.comments.find(item => item.id === this.currentImg).likes
       },
       comments: function () {
-        console.log(this.$store.getters.comments.find(item => item.id === this.currentImg).comments)
         return this.$store.getters.comments.find(item => item.id === this.currentImg).comments
       }
     },

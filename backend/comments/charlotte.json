@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "likes": 3,
+    "comments": []
+  },
+  {
+    "id": 1,
+    "likes": 2,
+    "comments": []
+  },
+  {
+    "id": 2,
+    "likes": 5,
+    "comments": []
+  },
+  {
+    "id": 3,
+    "likes": 1,
+    "comments": []
+  }
+]
