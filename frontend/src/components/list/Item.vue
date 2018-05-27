@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="handleClick">
     <img class="item__img" :src="src">
     <div class="item__name">{{name}}</div>
   </div>
@@ -59,6 +59,9 @@
             this.name = this.data.name;
           }
         }
+      },
+      handleClick() {
+        this.$emit('select-cat', this.data.id)
       }
     }
   }

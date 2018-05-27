@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <List class="list" :data="list"/>
+    <List class="list" :data="list" v-on:select-cat="selectCat"/>
     <Page class="page" v-if="selected" :data="selected"/>
   </div>
 </template>
@@ -38,6 +38,15 @@
       return {
         list: [],
         selected: null
+      }
+    },
+    methods: {
+      selectCat(id) {
+        for (let i = 0; i < this.list.length; i++) {
+          if (this.list[i].id === id ) {
+            this.selected = this.list[i];
+          }
+        }
       }
     },
     components: {

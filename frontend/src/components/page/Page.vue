@@ -4,7 +4,7 @@
       <img class="avatar" :src="src">
       <div>
         <h1 class="name">{{name}}</h1>
-        <p class="status">{{cat.status}}</p>
+        <p class="status" v-if="cat.status">{{cat.status}}</p>
         <div class="description">
           <span><b>Возраст: </b></span>
           <span>{{cat.age}}</span>
@@ -78,20 +78,21 @@
     name: 'page',
     props: ['data'],
     created: function () {
-      if (this.data.alias) {
-        axios.get(api.list + '/' + this.data.alias).then(response => {
-          this.cat = response.data;
-        }, error => console.log(error))
-        getComments(this.data.alias)
-      }
+      this.getFullData();
     },
     data() {
       return {
-        src: api.images + this.data.alias + '/0.jpg',
-        name: this.data.surname ? this.data.name + ' ' + this.data.surname : this.data.name,
         cat: {},
         isModalOpen: false,
         picOpened: 0
+      }
+    },
+    computed: {
+      name() {
+        return this.data.surname ? this.data.name + ' ' + this.data.surname : this.data.name
+      },
+      src() {
+        return api.images + this.data.alias + '/0.jpg'
       }
     },
     methods: {
@@ -101,6 +102,20 @@
       openModal(pic) {
         this.picOpened = pic;
         this.isModalOpen = true;
+      },
+      getFullData() {
+        if (this.data.alias) {
+          axios.get(api.list + '/' + this.data.alias).then(response => {
+            this.cat = response.data;
+            console.log(response.data)
+          }, error => console.log(error))
+          getComments(this.data.alias)
+        }
+      }
+    },
+    watch: {
+      data() {
+        this.getFullData();
       }
     },
     components: {

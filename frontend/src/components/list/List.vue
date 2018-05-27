@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <Item v-for="item in list" :data="item"/>
+    <Item v-for="item in list" :data="item" v-on:select-cat="sendClickEvent"/>
   </div>
 </template>
 <style lang="scss">
@@ -18,6 +18,11 @@
     },
     components: {
       Item
+    },
+    methods: {
+      sendClickEvent(id) {
+        this.$emit('select-cat', id)
+      }
     },
     watch: {
       data: function () {
