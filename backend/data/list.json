@@ -3,31 +3,37 @@
     "id": 0,
     "alias": "don_kihot",
     "name": "Дон",
-    "surname": "Кихот"
+    "surname": "Кихот",
+    "pics": 6
   },
   {
     "id": 1,
     "alias": "charlotte",
-    "name": "Шарлотта"
+    "name": "Шарлотта",
+    "pics": 4
   },
   {
     "id": 2,
     "alias": "ted",
-    "name": "Ted"
+    "name": "Ted",
+    "pics": 3
   },
   {
     "id": 3,
     "alias": "angelika",
-    "name": "Анжелика"
+    "name": "Анжелика",
+    "pics": 3
   },
   {
     "id": 4,
     "alias": "jonathan",
-    "name": "Джонатан"
+    "name": "Джонатан",
+    "pics": 3
   },
   {
     "id": 5,
     "alias": "lizzy",
-    "name": "Лиззи"
+    "name": "Лиззи",
+    "pics": 3
   }
 ]

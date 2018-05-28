@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="gallery">
-      <img class="pic" v-for="(item, index) in cat.pics" :src="getPicSrc(index)" @click="openModal(index)">
+      <img class="pic" v-if="pics" v-for="(item, index) in pics" :src="getPicSrc(index)" @click="openModal(index)">
     </div>
     <Modal v-if="data.alias"
            :alias="data.alias"
@@ -84,7 +84,8 @@
       return {
         cat: {},
         isModalOpen: false,
-        picOpened: 0
+        picOpened: 0,
+        pics: 0
       }
     },
     computed: {
@@ -104,10 +105,10 @@
         this.isModalOpen = true;
       },
       getFullData() {
+        this.pics = this.data.pics
         if (this.data.alias) {
           axios.get(api.list + '/' + this.data.alias).then(response => {
             this.cat = response.data;
-            console.log(response.data)
           }, error => console.log(error))
           getComments(this.data.alias)
         }

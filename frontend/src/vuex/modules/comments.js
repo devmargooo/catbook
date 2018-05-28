@@ -16,7 +16,6 @@ const state = {
 const mutations = {
   [COMMENTS_LIST] (state, payload) {
     state.comments = payload
-    console.log(state.comments)
   },
   [LIKE] (state, id) {
     for (let i = 0; i <  state.comments.length; i++) {
