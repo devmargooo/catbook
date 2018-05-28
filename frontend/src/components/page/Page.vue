@@ -21,7 +21,7 @@
     <Modal v-if="data.alias"
            :alias="data.alias"
            :current="picOpened"
-           :pics="cat.pics"
+           :pics="pics"
            :is-open="isModalOpen"
            @close-modal="isModalOpen = false"></Modal>
   </div>
