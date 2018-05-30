@@ -19,6 +19,6 @@ describe('Page.vue', () => {
         data: donKihot
       }
     })
-    expect(wrapper.contains('.status')).to.equal(true)
+    expect(wrapper.contains('div')).to.equal(true)
   })
 })

@@ -73,7 +73,7 @@
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'
-  import { getComments } from '../../vuex/modules/comments.js'
+  import { getComments } from '../../vuex/store'
   export default {
     name: 'page',
     props: ['data'],

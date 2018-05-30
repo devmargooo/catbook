@@ -103,7 +103,7 @@
 </style>
 <script>
   import api from '../../api/index'
-  import { likePhoto } from '../../vuex/modules/comments'
+  import { likePhoto } from '../../vuex/store'
   export default {
     name: 'modal',
     props: ['alias', 'current', 'pics', 'isOpen'],

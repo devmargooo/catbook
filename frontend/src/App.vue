@@ -5,11 +5,9 @@
 </template>
 
 <script>
-  import store from './vuex/store'
   import './assets/css/main.scss'
   export default {
-    name: 'App',
-    store: store
+    name: 'App'
   }
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <div></div>
     <List class="list" :data="list" v-on:select-cat="selectCat"/>
     <Page class="page" v-if="selected" :data="selected"/>
   </div>
@@ -25,7 +26,7 @@
 <script>
   import List from './list/List'
   import Page from './page/Page'
-  import { getCatsList } from '../vuex/modules/list'
+  import { getCatsList } from '../vuex/store'
   export default {
     name: 'home',
     created: function () {
