@@ -38,7 +38,9 @@ const charlotteExtended = {
 }
 
 describe('Page.vue', () => {
+
   // status
+
   it('should render status if data contains status', () => {
     const wrapper = mount(Page, {
       propsData: {
@@ -60,7 +62,7 @@ describe('Page.vue', () => {
 
   // name
 
-  it('should render correct name', () => {
+  it('should render correct name - name + surname', () => {
     const wrapper = mount(Page, {
       propsData: {
         data: donKihot
@@ -68,5 +70,14 @@ describe('Page.vue', () => {
     })
     const name = wrapper.find('.name')[0]
     expect(name.text()).to.equal('Дон Кихот')
+  })
+  it('should render correct name - name', () => {
+    const wrapper = mount(Page, {
+      propsData: {
+        data: charlotte
+      }
+    })
+    const name = wrapper.find('.name')[0]
+    expect(name.text()).to.equal('Шарлотта')
   })
 })
