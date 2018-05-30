@@ -23,8 +23,22 @@ const donKihotExtended = {
   'status': 'Борюсь с ветряными мельницами. Кто со мной?'
 }
 
+const charlotte = {
+  'id': 1,
+  'alias': 'charlotte',
+  'name': 'Шарлотта',
+  'pics': 4
+}
+
+const charlotteExtended = {
+  'id': 1,
+  'name': 'Шарлотта',
+  'age': 5,
+  'color': 'белый'
+}
+
 describe('Page.vue', () => {
-  it('should render status if data contains status field', () => {
+  it('should render status if data contains status', () => {
     const wrapper = mount(Page, {
       propsData: {
         data: donKihot
@@ -32,5 +46,14 @@ describe('Page.vue', () => {
     })
     wrapper.setData({cat: donKihotExtended});
     expect(wrapper.contains('.status')).to.equal(true)
+  })
+  it('should not render status if data not contains status', () => {
+    const wrapper = mount(Page, {
+      propsData: {
+        data: charlotte
+      }
+    })
+    wrapper.setData({cat: charlotteExtended});
+    expect(wrapper.contains('.status')).to.equal(false)
   })
 })
