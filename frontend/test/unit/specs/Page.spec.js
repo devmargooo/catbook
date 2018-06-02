@@ -80,4 +80,5 @@ describe('Page.vue', () => {
     const name = wrapper.find('.name')[0]
     expect(name.text()).to.equal('Шарлотта')
   })
+
 })
