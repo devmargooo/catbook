@@ -27,16 +27,13 @@ describe('Modal.vue', () => {
   it('init likes count', (done) => {
     const stubbedStore = new Vuex.Store(commentsModuleStubbed);
     const vm = mount(Modal, {
-      store: stubbedStore,
-      propsData: {
-        current: 5
-      }
+      store: stubbedStore
     });
-
-
+    expect(vm.data().likes).to.equal(0)
+    vm.setProps({current: 5})
     Vue.nextTick()
      .then(function () {
-          console.log(vm.data().test)
+         expect(vm.data().likes).to.equal(5)
          done()
        })
        .catch(done)

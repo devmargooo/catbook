@@ -73,7 +73,6 @@
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'
-  import { getComments } from '../../vuex/store'
   export default {
     name: 'page',
     props: ['data'],
@@ -110,7 +109,6 @@
           axios.get(api.list + '/' + this.data.alias).then(response => {
             this.cat = response.data;
           }, error => console.log(error))
-          getComments(this.data.alias)
         }
       }
     },

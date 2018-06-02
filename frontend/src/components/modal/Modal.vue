@@ -104,23 +104,35 @@
 <script>
   import api from '../../api/index'
   import { likePhoto } from '../../vuex/store'
+  import { getComments } from '../../vuex/store'
   export default {
     name: 'modal',
     props: ['alias', 'current', 'pics', 'isOpen'],
     data () {
       return {
-        currentImg: this.current
+        currentImg: this.current,
+        likes: 0,
+        comments: {
+          author: '',
+          test: ''
+        }
+      }
+    },
+    created () {
+      if (!this.$store.getters.comments.length) {
+        getComments(this.alias).
+        then(() => {
+          this.setCommentsData()
+        }, (e) => {
+          console.error(e)
+        })
+      } else {
+          this.setCommentsData()
       }
     },
     computed: {
       imgSrc: function () {
         return `${api.images}${this.alias}/${this.currentImg}.jpg`
-      },
-      likes: function () {
-        return this.$store.getters.comments.find(item => item.id === this.currentImg).likes
-      },
-      comments: function () {
-        return this.$store.getters.comments.find(item => item.id === this.currentImg).comments
       }
     },
     methods: {
@@ -130,6 +142,7 @@
         } else {
           this.currentImg = 0;
         }
+        this.setCommentsData()
       },
       moveLeft() {
         if (this.currentImg !== 0) {
@@ -137,6 +150,7 @@
         } else {
           this.currentImg = this.pics - 1;
         }
+        this.setCommentsData()
       },
       closePopup(e) {
         if (e.target.classList.contains('overlay')) {
@@ -148,11 +162,17 @@
       },
       like() {
         likePhoto(this.currentImg);
+      },
+      setCommentsData() {
+        if (!this.$store.getters.comments.find(item => item.id === this.currentImg)) return;
+        this.likes = this.$store.getters.comments.find(item => item.id === this.currentImg).likes;
+        this.comments = this.$store.getters.comments.find(item => item.id === this.currentImg).comments;
       }
     },
     watch: {
       current: function () {
         this.currentImg = this.current;
+        this.setCommentsData()
       }
     }
   }
