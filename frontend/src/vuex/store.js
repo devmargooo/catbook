@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from "axios/index";
 import api from '../api/index'
-
+import 'es6-promise/auto'
 const catsList = 'catsList'
 const commentsList = 'commentsList'
 const like = 'like'

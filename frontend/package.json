@@ -14,7 +14,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-    "es6-promise": "^4.2.4",
     "node-sass": "^4.8.3",
     "sass-loader": "^7.0.1",
     "vue": "^2.5.2",
@@ -38,6 +37,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.0",
+    "es6-promise": "^4.2.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",

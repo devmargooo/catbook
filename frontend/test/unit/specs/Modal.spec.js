@@ -1,6 +1,5 @@
 import { mount } from 'avoriaz'
-import Modal from '@/components/page/Modal.vue'
-import 'es6-promise/auto'
+import Modal from '@/components/modal/Modal.vue'
 import { commentsModule } from '../../../src/vuex/store';
 import Vuex from 'vuex';
 import Vue from 'vue';
@@ -24,4 +23,25 @@ describe('Modal.vue', () => {
       }
     ]
   })
+
+  it('init likes count', (done) => {
+    const stubbedStore = new Vuex.Store(commentsModuleStubbed);
+    const vm = mount(Modal, {
+      store: stubbedStore,
+      propsData: {
+        current: 5
+      }
+    });
+
+
+    Vue.nextTick()
+     .then(function () {
+          console.log(vm.data().test)
+         done()
+       })
+       .catch(done)
+
+  })
+
+
 })

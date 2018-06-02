@@ -6,7 +6,6 @@ import 'babel-polyfill';
 describe('Home.vue', () => {
   it('should render correct contents', () => {
     const vm = mount(Home)
-    console.log(vm.contains('div'))
     expect(vm.contains('div')).to.equal(true)
   })
 })
