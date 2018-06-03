@@ -30,10 +30,14 @@
   export default {
     name: 'home',
     created: function () {
-      getCatsList().then(() => {
-        this.list = this.$store.getters.catsList
-        this.selected = this.list[0]
-      })
+      getCatsList()
+        .then(() => {
+          this.list = this.$store.getters.catsList
+          this.selected = this.list[0]
+        })
+        .catch(() => {
+          throw new Exception('getting cats list exception')
+        })
     },
     data() {
       return {

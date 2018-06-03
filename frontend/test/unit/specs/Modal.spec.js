@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import Vue from 'vue';
 Vue.use(Vuex)
 import _ from 'lodash';
+import 'babel-polyfill';
 
 describe('Modal.vue', () => {
   let commentsModuleStubbed;
