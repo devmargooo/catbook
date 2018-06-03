@@ -81,4 +81,17 @@ describe('Page.vue', () => {
     expect(name.text()).to.equal('Шарлотта')
   })
 
+  // click
+  it('should open modal when click image', () => {
+    const wrapper = shallow(Page, {
+      propsData: {
+        data: donKihot
+      }
+    })
+    expect(wrapper.data().isModalOpen).to.equal(false)
+    const img = wrapper.find('.pic')[0]
+    img.trigger('click')
+    expect(wrapper.data().isModalOpen).to.equal(true)
+  })
+
 })
