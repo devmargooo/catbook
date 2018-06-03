@@ -66,9 +66,13 @@ const commentsModule = {
 }
 
 export const getComments = (alias) => {
-  return axios.get(api.comments + alias).then(response => {
-    store.dispatch(commentsList, response.data);
-  })
+  return axios.get(api.comments + alias)
+    .then(response => {
+      store.dispatch(commentsList, response.data);
+    })
+    .catch(() => {
+      throw new Exception('getting comments error')
+    })
 };
 
 export const likePhoto = (id) => {
@@ -76,9 +80,13 @@ export const likePhoto = (id) => {
 }
 
 export const getCatsList = () => {
-  return axios.get(api.list).then(response => {
-    store.dispatch(catsList, response.data);
-  })
+  return axios.get(api.list)
+    .then(response => {
+      store.dispatch(catsList, response.data);
+    })
+    .catch(() => {
+      throw new Exception('getting cats list error')
+    })
 };
 
 export const store = new Vuex.Store({

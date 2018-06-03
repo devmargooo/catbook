@@ -73,11 +73,15 @@
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'
+  import _ from 'lodash';
+  import 'es6-promise/auto'
   export default {
     name: 'page',
     props: ['data'],
     created: function () {
-      this.getFullData();
+      if (_.isEmpty(this.cat)) {
+        this.getFullData();
+      }
     },
     data() {
       return {
@@ -106,9 +110,14 @@
       getFullData() {
         this.pics = this.data.pics
         if (this.data.alias) {
-          axios.get(api.list + '/' + this.data.alias).then(response => {
-            this.cat = response.data;
-          }, error => console.log(error))
+          axios.get(api.list + '/' + this.data.alias)
+            .then(response => {
+              this.cat = response.data;
+              return true;
+            })
+            .catch(() => {
+              throw new Exception('getting data error')
+            })
         }
       }
     },

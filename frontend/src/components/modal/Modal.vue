@@ -120,19 +120,20 @@
     },
     created () {
       if (!this.$store.getters.comments.length) {
-        getComments(this.alias).
-        then(() => {
-          this.setCommentsData()
-        }, (e) => {
-          console.error(e)
-        })
+        getComments(this.alias)
+          .then(() => {
+            this.setCommentsData()
+          })
+          .catch(() => {
+            throw new Exception('getting comments error')
+          })
       } else {
           this.setCommentsData()
       }
     },
     computed: {
       imgSrc: function () {
-        return `${api.images}${this.alias}/${this.currentImg}.jpg`
+         return `${api.images}${this.alias}/${this.currentImg}.jpg`
       }
     },
     methods: {
@@ -158,7 +159,7 @@
         }
       },
       getAvatarSrc(alias) {
-        return api.images + alias + '/0.jpg'
+         return api.images + alias + '/0.jpg'
       },
       like() {
         likePhoto(this.currentImg);
