@@ -8,4 +8,9 @@ describe('Home.vue', () => {
     const vm = shallow(Home)
     expect(vm.contains('div')).to.equal(true)
   })
+  it('should has correct css class', () => {
+    const vm = shallow(Home)
+    const main = vm.find('.main')[0];
+    expect(main.hasClass('main')).to.equal(true)
+  })
 })
