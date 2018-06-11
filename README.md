@@ -2,17 +2,17 @@
 
 - For run server:
 
-cd backend
+cd backend  
 node server.js
 
 - For run client:
 
-cd frontend
+cd frontend  
 npm run dev
 
 - For run test: 
 
-cd frontend
+cd frontend  
 run unit
 
 - For make me happy
