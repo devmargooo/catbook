@@ -15,6 +15,6 @@ npm run dev
 cd frontend  
 run unit
 
-- For make me happy
+- For make me happy:
 
 Please smile for me :)
