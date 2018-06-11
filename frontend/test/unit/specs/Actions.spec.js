@@ -20,7 +20,6 @@ describe('actions', () => {
   it('catsList', () => {
     const stubbedStore = new Vuex.Store(commentsListStubbed);
     stubbedStore.dispatch(catsList, payload);
-    console.log(commentsListStubbed.state.list)
     expect(commentsListStubbed.state.list).to.deep.equal(payload)
   })
 })

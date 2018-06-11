@@ -16,7 +16,8 @@
       </div>
     </div>
     <div class="gallery">
-      <img class="pic" v-if="pics" v-for="(item, index) in pics" :src="getPicSrc(index)" @click="openModal(index)">
+      <img class="pic" v-if="pics" v-for="(item, index) in pics"
+           :src="getPicSrc(index)" @click="openModal(index)">
     </div>
     <Modal v-if="data.alias"
            :alias="data.alias"
