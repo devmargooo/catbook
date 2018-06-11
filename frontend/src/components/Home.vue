@@ -29,15 +29,18 @@
   import { getCatsList } from '../vuex/store'
   export default {
     name: 'home',
+    props: ['testENV'],
     created: function () {
-      getCatsList()
-        .then(() => {
-          this.list = this.$store.getters.catsList
-          this.selected = this.list[0]
-        })
-        .catch(() => {
-          throw new Exception('getting cats list exception')
-        })
+      if (!this.testENV) {
+        getCatsList()
+          .then(() => {
+            this.list = this.$store.getters.catsList
+            this.selected = this.list[0]
+          })
+          .catch(() => {
+            throw new Exception('getting cats list exception')
+          })
+      }
     },
     data() {
       return {

@@ -70,11 +70,11 @@
   }
 </style>
 <script>
+  import 'es6-promise/auto'
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'
   import _ from 'lodash';
-  import 'es6-promise/auto'
   export default {
     name: 'page',
     props: ['data'],
@@ -123,7 +123,9 @@
     },
     watch: {
       data() {
-        this.getFullData();
+        if (_.isEmpty(this.cat)) {
+          this.getFullData();
+        }
       }
     },
     components: {
