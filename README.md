@@ -1,20 +1,20 @@
 # catbook
 
-- For run server:
+- To run server:
 
 cd backend  
 node server.js
 
-- For run client:
+- To run client:
 
 cd frontend  
 npm run dev
 
-- For run test: 
+- To run test: 
 
 cd frontend  
 npm run unit
 
-- For make me happy:
+- To make me happy:
 
-Please smile to me :)
+Please smile for me :)
