@@ -70,7 +70,6 @@
   }
 </style>
 <script>
-  import 'es6-promise/auto'
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'

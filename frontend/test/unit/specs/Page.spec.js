@@ -1,6 +1,5 @@
 import { shallow } from 'avoriaz'
 import Page from '@/components/page/Page.vue'
-import 'es6-promise/auto'
 import Vuex from 'vuex'
 import Vue from 'vue'
 Vue.use(Vuex)

@@ -40,24 +40,6 @@ describe('Modal.vue', () => {
        .catch(done)
 
   })
-  // it('likes increase when click like', (done) => {
-  //   const stubbedStore = new Vuex.Store(commentsModuleStubbed);
-  //   const vm = mount(Modal, {
-  //     store: stubbedStore,
-  //     propsData: {
-  //       isOpen: true
-  //     }
-  //   });
-  //   vm.setProps({current: 5})
-  //   const img = vm.find('.like__img')[0];
-  //   img.trigger('click');
-  //   Vue.nextTick()
-  //     .then(function () {
-  //       expect(vm.data().likes).to.equal(6)
-  //       done()
-  //     })
-  //     .catch(done)
-  // })
 
 
 })
