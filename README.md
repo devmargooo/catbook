@@ -13,8 +13,8 @@ npm run dev
 - For run test: 
 
 cd frontend  
-run unit
+npm run unit
 
 - For make me happy:
 
-Please smile for me :)
+Please smile to me :)
