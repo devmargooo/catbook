@@ -43,7 +43,8 @@ describe('Page.vue', () => {
   it('should render status if data contains status', () => {
     const wrapper = shallow(Page, {
       propsData: {
-        data: donKihot
+        data: donKihot,
+        testENV: true
       }
     })
     wrapper.setData({cat: donKihotExtended});
@@ -52,7 +53,8 @@ describe('Page.vue', () => {
   it('should not render status if data not contains status', () => {
     const wrapper = shallow(Page, {
       propsData: {
-        data: charlotte
+        data: charlotte,
+        testENV: true
       }
     })
     wrapper.setData({cat: charlotteExtended});
@@ -64,7 +66,8 @@ describe('Page.vue', () => {
   it('should render correct name - name + surname', () => {
     const wrapper = shallow(Page, {
       propsData: {
-        data: donKihot
+        data: donKihot,
+        testENV: true
       }
     })
     const name = wrapper.find('.name')[0]
@@ -73,7 +76,8 @@ describe('Page.vue', () => {
   it('should render correct name - name', () => {
     const wrapper = shallow(Page, {
       propsData: {
-        data: charlotte
+        data: charlotte,
+        testENV: true
       }
     })
     const name = wrapper.find('.name')[0]
@@ -84,7 +88,8 @@ describe('Page.vue', () => {
   it('should open modal when click image', () => {
     const wrapper = shallow(Page, {
       propsData: {
-        data: donKihot
+        data: donKihot,
+        testENV: true
       }
     })
     expect(wrapper.data().isModalOpen).to.equal(false)

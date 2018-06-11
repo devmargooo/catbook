@@ -78,7 +78,7 @@
     name: 'page',
     props: ['data'],
     created: function () {
-      if (_.isEmpty(this.cat)) {
+      if (!this.testENV) {
         this.getFullData();
       }
     },
@@ -122,7 +122,7 @@
     },
     watch: {
       data() {
-        if (_.isEmpty(this.cat)) {
+        if (!this.testENV) {
           this.getFullData();
         }
       }
