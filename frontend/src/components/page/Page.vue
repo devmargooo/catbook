@@ -77,8 +77,9 @@
   import _ from 'lodash';
   export default {
     name: 'page',
-    props: ['data'],
+    props: ['data', 'testENV'],
     created: function () {
+      this.pics = this.data.pics
       if (!this.testENV) {
         this.getFullData();
       }
@@ -108,7 +109,6 @@
         this.isModalOpen = true;
       },
       getFullData() {
-        this.pics = this.data.pics
         if (this.data.alias) {
           axios.get(api.list + '/' + this.data.alias)
             .then(response => {
@@ -123,6 +123,7 @@
     },
     watch: {
       data() {
+        this.pics = this.data.pics
         if (!this.testENV) {
           this.getFullData();
         }
