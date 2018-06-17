@@ -74,7 +74,6 @@
   import api from '../../api/index'
   import axios from 'axios'
   import Modal from '../modal/Modal'
-  import _ from 'lodash';
   export default {
     name: 'page',
     props: ['data', 'testENV'],

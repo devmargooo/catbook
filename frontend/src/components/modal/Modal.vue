@@ -163,6 +163,7 @@
       },
       like() {
         likePhoto(this.currentImg);
+        this.setCommentsData();
       },
       setCommentsData() {
         if (!this.$store.getters.comments.find(item => item.id === this.currentImg)) return;
