@@ -78,7 +78,7 @@
     name: 'page',
     props: ['data', 'testENV'],
     created: function () {
-      this.pics = this.data.pics
+      this.pics = this.data.pics;
       if (!this.testENV) {
         this.getFullData();
       }
@@ -93,7 +93,7 @@
     },
     computed: {
       name() {
-        return this.data.surname ? this.data.name + ' ' + this.data.surname : this.data.name
+        return this.data.surname ? this.data.name + ' ' + this.data.surname : this.data.name;
       },
       src() {
         return api.images + this.data.alias + '/0.jpg'

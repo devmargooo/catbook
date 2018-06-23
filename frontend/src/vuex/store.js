@@ -1,16 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from "axios/index";
-import api from '../api/index'
-import 'es6-promise/auto'
-const catsList = 'catsList'
-const commentsList = 'commentsList'
-const like = 'like'
-const CATS_LIST = 'CATS_LIST'
-const COMMENTS_LIST = 'COMMENTS_LIST'
-const LIKE = 'LIKE'
+import api from '../api/index';
+import 'es6-promise/auto';
 
-Vue.use(Vuex)
+const catsList = 'catsList';
+const commentsList = 'commentsList';
+const like = 'like';
+const CATS_LIST = 'CATS_LIST';
+const COMMENTS_LIST = 'COMMENTS_LIST';
+const LIKE = 'LIKE';
+
+Vue.use(Vuex);
 
 const listModule = {
   state: {
@@ -31,7 +32,7 @@ const listModule = {
       return state.list;
     }
   }
-}
+};
 
 const commentsModule = {
   state: {
@@ -77,7 +78,7 @@ export const getComments = (alias) => {
 
 export const likePhoto = (id) => {
   store.dispatch(like, id)
-}
+};
 
 export const getCatsList = () => {
   return axios.get(api.list)
@@ -94,7 +95,7 @@ export const store = new Vuex.Store({
     list: listModule,
     comments: commentsModule
   }
-})
+});
 
 export {
   listModule,

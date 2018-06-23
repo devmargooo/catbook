@@ -143,7 +143,7 @@
         } else {
           this.currentImg = 0;
         }
-        this.setCommentsData()
+        this.setCommentsData();
       },
       moveLeft() {
         if (this.currentImg !== 0) {
@@ -151,15 +151,15 @@
         } else {
           this.currentImg = this.pics - 1;
         }
-        this.setCommentsData()
+        this.setCommentsData();
       },
       closePopup(e) {
         if (e.target.classList.contains('overlay')) {
-          this.$emit('close-modal')
+          this.$emit('close-modal');
         }
       },
       getAvatarSrc(alias) {
-         return api.images + alias + '/0.jpg'
+         return api.images + alias + '/0.jpg';
       },
       like() {
         likePhoto(this.currentImg);
@@ -174,7 +174,7 @@
     watch: {
       current: function () {
         this.currentImg = this.current;
-        this.setCommentsData()
+        this.setCommentsData();
       }
     }
   }
