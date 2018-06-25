@@ -14,7 +14,7 @@ describe('Modal.vue', () => {
     commentsModuleStubbed.state.comments = [
       {
         'id': 5,
-        'likes': 5,
+        'likes': 9,
         'comments': [
           {
             'author': 'charlotte',
@@ -34,7 +34,7 @@ describe('Modal.vue', () => {
     vm.setProps({current: 5});
     Vue.nextTick()
      .then(function () {
-         expect(vm.data().likes).to.equal(5);
+         expect(vm.data().likes).to.equal(9);
          done();
        })
        .catch(done)
